@@ -31,7 +31,7 @@ resource "confluent_kafka_acl" "app-producer-write-on-topic" {
 
 resource "confluent_kafka_acl" "app-consumer-read-on-topic" {
   kafka_cluster {
-    id = confluent_kafka_cluster.basic.id
+    id = confluent_kafka_cluster.bootcamp_basic.id
   }
   resource_type = "TOPIC"
   resource_name = confluent_kafka_topic.orders.topic_name
@@ -40,7 +40,7 @@ resource "confluent_kafka_acl" "app-consumer-read-on-topic" {
   host          = "*"
   operation     = "READ"
   permission    = "ALLOW"
-  rest_endpoint = confluent_kafka_cluster.basic.rest_endpoint
+  rest_endpoint = confluent_kafka_cluster.bootcamp_basic.rest_endpoint
   credentials {
     key    = confluent_api_key.app-manager-kafka-api-key.id
     secret = confluent_api_key.app-manager-kafka-api-key.secret
